@@ -1,0 +1,15 @@
+# install Java JDK 1.8+ as a pre-requisit for tomcat to run.
+cd /opt 
+sudo yum install git wget unzip -y
+sudo yum install java-1.8.0-openjdk-devel -y
+# Download tomcat software and extract it. 
+sudo wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.59/bin/apache-tomcat-9.0.59.tar.gz
+sudo tar -xvf apache-tomcat-9.0.59.tar.gz
+sudo rm apache-tomcat-9.0.59.tar.gz
+sudo mv apache-tomcat-9.0.59 tomcat9
+sudo chmod 777 -R /opt/tomcat9
+# create a soft link to start and stop tomcat
+sudo ln -s /opt/tomcat9/bin/startup.sh /usr/bin/starttomcat
+sudo ln -s /opt/tomcat9/bin/shutdown.sh /usr/bin/stoptomcat
+sudo chmod 777 -R /opt/tomcat9
+sudo starttomcat
